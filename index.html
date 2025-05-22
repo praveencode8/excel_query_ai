@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excel Query Ai</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+        <h2 style="margin: 0;">Excel Query AI</h2>
+    </div>
+
+    <div class="container">
+        <div class="box">
+            <h3>Ask a Question</h3>
+            <form method="post" onsubmit="showLoading()">
+                <textarea name="query" rows="4" cols="70" placeholder="e.g. Show top 5 funds by AUM" required></textarea><br>
+                <input type="submit" value="Ask">
+            </form>
+            <div id="loading" style="display:none; margin-top: 20px;">
+                <strong>Processing your query, please wait...</strong>
+            </div>
+
+            {% if query %}
+                <h2>Query:</h2><p>{{ query }}</p>
+                <h2>Result:</h2>{{ result_html|safe }}
+                <h2>Gemini Code:</h2><pre>{{ code }}</pre>
+            {% endif %}
+        </div>
+
+        <div class="box">
+            <h3>Upload Excel File</h3>
+            <form action="/" method="post" enctype="multipart/form-data" id="upload-form">
+                <input type="file" name="file" id="file-input" required onchange="updateFileName()"><br><br>
+                <span id="file-name">
+                    {% if uploaded_filename %}
+                        {{ uploaded_filename }}
+                    {% else %}
+                        No file chosen
+                    {% endif %}
+                </span><br><br>
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        
+        
+    </div>
+
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+    
+        
+    function updateFileName() {
+        const input = document.getElementById('file-input');
+        const fileNameSpan = document.getElementById('file-name');
+        if (input.files.length > 0) {
+            fileNameSpan.textContent = input.files[0].name;
+        } else {
+            fileNameSpan.textContent = 'No file chosen';
+        }
+    }
+
+    </script>
+    
+</body>
+</html>

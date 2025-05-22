@@ -1,0 +1,64 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+
+}
+
+h2, h3{
+    text-align: center;
+}
+
+.navbar {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.navbar img {
+    height: 40px;
+    margin-right: auto;
+}
+
+.navbar h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+}
+
+.box {
+    background-color: #19222C;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+/* Make first box larger and second one smaller */
+.container .box:first-child {
+    flex: 2;
+}
+
+.container .box:last-child {
+    flex: 1;
+}
+
+
+textarea {
+    width: 100%;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 10px;
+}
