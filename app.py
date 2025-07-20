@@ -13,7 +13,7 @@ from io import BytesIO
 app = Flask(__name__)
 
 # Gemini setup
-genai.configure(api_key="AIzaSyAVd1hVl83_L6e_zVnyN3vmiGko23fHa0Q")
+genai.configure(api_key="your-api-key")
 model = genai.GenerativeModel("gemini-1.5-flash")
 
 global_excel_data = {}
